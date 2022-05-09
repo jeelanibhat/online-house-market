@@ -4,6 +4,7 @@ import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Spinner from "../component/Spinner";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -18,7 +19,10 @@ const Profile = () => {
 
   const onLogout = () => {
     auth.signOut();
-    navigate("/");
+    toast.success("Logged out successfully");
+    setTimeout(() => {
+      navigate("/");
+    }, 100);
   };
 
   // submit
